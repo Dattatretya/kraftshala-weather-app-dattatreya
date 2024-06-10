@@ -23,6 +23,7 @@ Brief summary of the application:
     -Date and time when the temperature is retrieved
     -Feels-like temperature
     -Description of the weather wit a short message
+    -Range of temperature when the maximum and minimum temperatures are different
     -Humidity
     -Wind speed
     -Visibility
