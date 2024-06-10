@@ -78,19 +78,20 @@ const Weather = () => {
 
 
     //useEffect hook for making the api call once the final location changes
-
+    
     useEffect(()=>{
         weatherCall()
     },[finalLoc])
-
+   
 
     //an async function to get te api data
-
+    
     const weatherCall =async ()=>{
         const data =await fetch(URL)
         const json = await data.json()
         setWeatherData(json)
     }
+    
 
     const API_KEY= "70b1a04435e3173a3d8a2cb2d841a049"
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${finalLoc}&appid=${API_KEY}&units=metric`
@@ -100,9 +101,12 @@ const Weather = () => {
 
   return (
 
+    //Main container for the Weather data
     <div 
     style={{backgroundImage: `url(${weatherimage[weatherData?.weather?.[0]?.main]})`}}
-    className="rounded-lg m-2 p-2"> 
+    className="rounded-lg m-2 p-2 shadow-xl"> 
+
+    {/* form is used to received user input and on click or on pressing enter, the data is used to make an API call */}
         <form className='flex justify-center' onSubmit={(e)=>e.preventDefault()}>
         <input type='text' placeholder='📍 location' className='border border-black shadow-lg px-2 py-1 m-1 rounded-lg capitalize dark:bg-black dark:text-white' value={location} 
         onChange={(e)=>setLocation(e.target.value)}
@@ -113,6 +117,7 @@ const Weather = () => {
         >Search</button>
         </form>
 
+        {/* Conditional rendering of the weather data so that data is only rendered when available. The error is handled on this step and it returns an appropriate message on the screen */}
         {weatherData.main? 
         (
         <div 
@@ -130,7 +135,7 @@ const Weather = () => {
             <p className='text-md flex justify-center'>as on {currDate}, {currTime}</p>
             <p className='flex justify-center text-xl mt-6'>Feels like {weatherData?.main?.feels_like} °C</p>
             <div className='flex justify-between text-xl m-2'>
-                {/* if temperature is same for both minimum and maximum, do not show range but show the temparture is same throughout */}
+                {/* if temperature is same for both minimum and maximum, do not show range, else give the range as min to maximum */}
                {weatherData?.main?.temp_min!==weatherData?.main?.temp_max?
                (<p>Range: {weatherData?.main?.temp_min} °C to {weatherData?.main?.temp_max} °C</p>)
                :
@@ -145,6 +150,7 @@ const Weather = () => {
             </div>
 
             <p className='m-1 p-1 text-xl flex justify-center'>Humidity is {weatherData?.main?.humidity}%</p>
+            <p className='m-1 p-1 text-xl flex justify-center'>Wind is blowing at {weatherData?.wind?.speed} km/h</p>
             <p className='m-1 p-1 text-xl flex justify-center'>Visibility is upto {weatherData?.visibility/1000} km</p>
             </div>
             <div className='flex justify-center'>
