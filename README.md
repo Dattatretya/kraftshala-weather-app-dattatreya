@@ -1,4 +1,10 @@
-Brief summary:
+# kraftshala-weather-app-dattatreya
+
+Weather-app using OpenWeatherMap API:
+
+1. Created an account in https://openweathermap.org/ and was provided with an API to make 1000 calls per day
+
+Brief summary of the application:
 
 1. Created a basic structure using create react app
 2. Used Tailwind CSS for styling the app
@@ -35,7 +41,7 @@ How to get the app to your local repository and run:
 
 git clone "https://github.com/Dattatretya/kraftshala-weather-app-dattatreya"
 
-2. Open the folder by the name "kraftshala-weather-app-dattatreya" that has been cloned in vs code/preferred IDE by right-clicking and selecting VS Code. Please check if you are in the correct folder before opening.
+2. Open the folder by the name "kraftshala-weather-app-dattatreya" that has been cloned, in vs code/preferred IDE by right-clicking and selecting VS Code. Please check if you are in the correct folder before opening.
 
 3. To run the app, write the below command in the terminal of the IDE:
 
@@ -48,3 +54,8 @@ Known Issues/Limitations:
 
 1. The network error has not been resolved and if it is run in offline mode, it gives a "Failed to fetch error". Did not use a try and catch block for that.
 2. The dark mode background image could have been different.
+
+
+The app has been deployed in netlify. Here is the link:
+
+https://dattatreya-weather.netlify.app/
