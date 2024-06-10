@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import useOnlineStatus from './Hooks/useOnlineStatus'
 
 const Weather = () => {
 
@@ -15,12 +14,13 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState([])
 
     
+    // Taking date and time from the local machine
 
     const currDate = new Date().toLocaleDateString();
     const currTime = new Date().toLocaleTimeString();
  
    
-
+    // Object with descriptive messages used for description rendering on the application. The data is received from APi as main.
 
     const weatherdescription = {
         "Clear":"The sky is clear. You can go ahead and take a walk.",
@@ -46,6 +46,7 @@ const Weather = () => {
 
         }
 
+        // Object with image links for the images to be rendered as background images for the weather app depending on the weaher description, thus stores as key value pairs, the keys being the description receibed from the API as "Main"
 
         const weatherimage = {
             "Clear sky": "https://png.pngtree.com/background/20211216/original/pngtree-weather-blue-sky-daytime-white-clouds-clear-sky-picture-image_1507468.jpg",
@@ -71,6 +72,7 @@ const Weather = () => {
     
             }
 
+            // function that is called to reset the data on the weather call app
         const reset = ()=>{
             setFinalLoc("")
             setLocation("")
@@ -125,6 +127,7 @@ const Weather = () => {
             <div className='text-3xl'>
             <p className='flex justify-center'> {weatherData?.name}, {weatherData?.sys?.country} </p>
 
+            {/* used optional chaining on the object render dot notation to prevent errors */}
 
             </div>
             <div className='m-2 -2'>
@@ -153,13 +156,17 @@ const Weather = () => {
             <p className='m-1 p-1 text-xl flex justify-center'>Wind is blowing at {weatherData?.wind?.speed} km/h</p>
             <p className='m-1 p-1 text-xl flex justify-center'>Visibility is upto {weatherData?.visibility/1000} km</p>
             </div>
+
+                {/* Reset Button to reset the data back to null */}
+
             <div className='flex justify-center'>
             <button className='dark:bg-yellow-500 border-white dark:text-black p-2 rounded-lg text-white bg-black' onClick={()=>reset()}>Reset</button>
             </div>
         </div>
         )
+        //Display message when data is not there
         :
-        <div className='m-2 p-2 rounded-lg text-white dark:bg-black dark:text-white'>Please enter valid location</div>
+        <div className='m-2 p-2 rounded-lg text-white dark:bg-black dark:text-white'>Please enter a valid location</div>
         }
     </div>
     
