@@ -7,13 +7,19 @@ import { useState } from 'react';
 
 function App() {
 
+  //state variable for dark mode button
+
   const [dark, setDark]= useState(false)
+
+  //function that is executed when the dark mode button is clicked. Used the classList toggle feture to toggle classes for tailwind to render accordingly.
 
   const darkMode=()=>{
     setDark(!dark)
     document.body.classList.toggle("dark")
   }
 
+  // data received from the custom hook as boolean value
+  
   const online = useOnlineStatus()
 
   return (
@@ -27,7 +33,7 @@ function App() {
     <div className='flex justify-center '>
       <span className='p-2 m-2 rounded-lg font-bold text-black shadow-md text-4xl dark:bg-black dark:text-white '>Weather App</span>
     </div>
-    
+    {/* Making use of the components in react to make the app take multiple locations and display that on the screen*/}
     <div className="flex justify-evenly p-2 m-2">
      <Weather/>
      <Weather/>
